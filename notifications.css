@@ -1,0 +1,214 @@
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #notification-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .notification {
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-info {
+            display: flex;
+            align-items: center;
+        }
+
+       
+
+        .notification-text {
+            flex-grow: 1;
+            padding-right: 15px;
+        }
+
+        .notification-text p {
+            margin: 0;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .notification-text span {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .notification-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .mark-as-read {
+            margin-left: 10px;
+            padding: 8px 16px;
+            background-color: #eee;
+            color: #777;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .mark-as-read:hover {
+            background-color: #ddd;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #555;
+            background-color: #f9f9f9;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .pagination a.active {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+
+        /* Estilos para os botões de página anterior/próxima */
+        .pagination-button {
+            background-color: #ff0000;
+            border: none;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination-button:hover {
+            background-color: #cc0000;
+        }
+
+
+        /* Estilo para o menu de navegação */
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Estilo para os ícones */
+        .fas {
+            margin-right: 5px;
+        }
+
+        /* Estilo para o conteúdo principal */
+        main {
+            padding: 20px;
+        }
+
+   
+     nav {
+    background-color: #333; /* Cor de fundo */
+    padding: 10px; /* Espaçamento interno */
+}
+
+nav a {
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado dos links */
+    display: inline-block; /* Exibir os links em linha */
+    margin-right: 20px; /* Espaçamento entre os links */
+}
+
+nav a i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+ .channel-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .channel-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .channel-name {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+        }.channel-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.channel-info img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.channel-info p {
+    font-weight: bold;
+}
+
+            </style>

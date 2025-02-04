@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net You Stream - Envio de Arquivos</title>
+    <link rel="stylesheet" href="uploads.css">
+    <!-- Adicione a biblioteca de ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+</head>
+<body>
+    <header>
+        <h1>Net You Stream</h1>
+    </header>
+
+    <nav>
+        <!-- Menu de navegação -->
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
+    </nav>
+
+<div id="upload-container">
+    <h2>Envie seus arquivos</h2>
+    <div id="upload-form">
+        <form id="uploadForm" enctype="multipart/form-data">
+            <label for="file"><i class="fas fa-file"></i> Escolha um arquivo:</label>
+            <input type="file" id="file" name="file" accept="video/*, image/*, audio/*" required>
+            
+            <label for="title"><i class="fas fa-font"></i> Nome do arquivo:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="description"><i class="fas fa-comment"></i> Descrição do arquivo:</label>
+            <textarea id="description" name="description"></textarea>
+            
+            <label for="category"><i class="fas fa-list-alt"></i> Categoria:</label>
+            <select id="category" name="category" onchange="updateInfo()">
+                <option value="VIP">VIP</option>
+                <option value="Jogos">Jogos</option>
+                <option value="Música">Música</option>
+                <option value="Filmes">Filmes</option>
+                <option value="Live">Live</option>
+                <option value="Esporte">Esporte</option>
+                <option value="Podcast">Podcast</option>
+                <option value="Notícias">Notícias</option>
+            </select>
+            
+            <label for="duration"><i class="fas fa-clock"></i> Duração:</label>
+            <input type="text" id="duration" name="duration" placeholder="00:00:00" onchange="updateInfo()" required>
+            
+            <br><br>
+            <input type="button" id="submitBtn" value="Enviar">
+        </form>
+    </div>
+
+
+
+        <!-- Novo campo para enviar URLs de vídeo -->
+        <div id="url-upload">
+            <h3>Ou envie uma URL de vídeo</h3>
+            <label for="video_url"><i class="fas fa-link"></i> URL do vídeo:</label>
+            <input type="url" id="video_url" name="video_url" placeholder="https://example.com/video" required>
+            <button id="upload-url-button">Enviar URL</button>
+        </div>
+
+        <progress id="upload-progress" value="0" max="100" style="display: none;"></progress>
+        <p id="upload-message" style="display: none;"></p>
+    </div>
+<!-- Seção para exibir vídeos enviados -->
+<section id="uploadedVideos">
+    <h3>Vídeos Enviados Recentemente</h3>
+    <div id="videoList">
+        <!-- Exemplo de vídeo 1 -->
+   
+</section>
+
+
+
+
+    <footer>
+        <p>&copy; 2025 Net You Stream. Todos os direitos reservados.</p>
+        <p><a href="termos.html">Termos de uso e Serviço</a> | <a href="privacidade.html">Política de Privacidade</a></p>
+    </footer>
+</body>
+</html>

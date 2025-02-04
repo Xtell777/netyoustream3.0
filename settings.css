@@ -1,0 +1,124 @@
+ <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #settings-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #ccc;
+        }
+
+        .setting-option {
+            margin-bottom: 20px;
+        }
+
+        .setting-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .setting-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .save-button {
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 576px) {
+            .setting-input {
+                width: calc(100% - 20px);
+            }
+        }
+
+
+        /* Estilo para o menu de navegação */
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Estilo para os ícones */
+        .fas {
+            margin-right: 5px;
+        }
+
+        /* Estilo para o conteúdo principal */
+        main {
+            padding: 20px;
+        }
+
+   
+     nav {
+    background-color: #333; /* Cor de fundo */
+    padding: 10px; /* Espaçamento interno */
+}
+
+nav a {
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado dos links */
+    display: inline-block; /* Exibir os links em linha */
+    margin-right: 20px; /* Espaçamento entre os links */
+}
+
+nav a i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+
+        
+    </style>

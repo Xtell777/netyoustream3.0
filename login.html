@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net You Stream - Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div id="login-container">
+        <h2>Net You Stream - Login</h2>
+        <form id="login-form">
+            <div class="login-option">
+                <label for="username" class="login-label">Nome de Usuário ou E-mail:</label>
+                <input type="text" id="username" class="login-input" placeholder="Digite seu nome de usuário ou e-mail" required>
+            </div>
+            <div class="login-option">
+                <label for="password" class="login-label">Senha:</label>
+                <input type="password" id="password" class="login-input" placeholder="Digite sua senha" required>
+            </div>
+            <div id="error-message" class="error-message"></div>
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+        <p>Não tem uma conta? <a href="register.html">Registre-se aqui</a></p>
+    </div>
+
+    <script>
+        // Função de login
+        async function handleLogin(event) {
+            event.preventDefault();  // Previne o envio do formulário
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = ""; // Limpa mensagens de erro anteriores
+
+            // Validação simples dos campos
+            if (!username || !password) {
+                errorMessage.textContent = "Por favor, preencha todos os campos.";
+                return;
+            }
+
+            // Validação do nome de usuário (deve começar com "@" e ter entre 3 a 20 caracteres)
+            const usernamePattern = /^@([A-Za-z0-9_]{3,20})$/;
+            if (!usernamePattern.test(username)) {
+                errorMessage.textContent = "O nome de usuário deve começar com '@' e ter entre 3 a 20 caracteres.";
+                return;
+            }
+
+            // Validação do e-mail (formato válido e não mais de 254 caracteres)
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (username.includes('@') && username.length <= 254 && !emailPattern.test(username)) {
+                errorMessage.textContent = "Por favor, insira um e-mail válido.";
+                return;
+            }
+
+            // Validação da senha (deve ter entre 8 a 20 caracteres)
+            if (password.length < 8 || password.length > 20) {
+                errorMessage.textContent = "A senha deve ter entre 8 a 20 caracteres.";
+                return;
+            }
+
+            try {
+                // Realiza a requisição para o backend
+                const response = await fetch("login_api.php", {  // URL do script PHP para autenticação
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ username: username, password: password })
+                });
+
+                const data = await response.json(); // Resposta JSON do servidor
+
+                // Verifica se a autenticação foi bem-sucedida
+                if (response.ok && data.token) {
+                    // Armazena o token no sessionStorage (mais seguro que localStorage)
+                    sessionStorage.setItem("token", data.token); 
+                    sessionStorage.setItem("username", username); // Armazena o nome de usuário
+
+                    // Redireciona para a página inicial após login
+                    window.location.href = "homepage.html";  
+                } else {
+                    // Exibe a mensagem de erro retornada pelo servidor
+                    errorMessage.textContent = data.message || "Erro ao fazer login. Verifique suas credenciais.";
+                }
+            } catch (error) {
+                // Erro de conexão com o servidor
+                errorMessage.textContent = "Erro de conexão. Tente novamente mais tarde.";
+            }
+        }
+
+        // Adiciona o evento de submit ao formulário
+        document.getElementById('login-form').addEventListener('submit', handleLogin);
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+/* Reset básico de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #141414; /* Fundo escuro */
+    color: #fff; /* Texto branco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container de login */
+#login-container {
+    background-color: #1e1e1e; /* Fundo do container */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Título */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #e50914; /* Cor vermelha do título */
+}
+
+/* Formulário de login */
+#login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-option {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.login-label {
+    font-size: 14px;
+    color: #bbb; /* Cor cinza claro para o texto dos rótulos */
+    margin-bottom: 5px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #333; /* Borda escura */
+    border-radius: 4px;
+    background-color: #2a2a2a; /* Fundo do input */
+    color: #fff; /* Texto branco dentro do input */
+}
+
+.login-input:focus {
+    border-color: #e50914; /* Borda vermelha ao focar no input */
+    outline: none;
+}
+
+/* Botão de login */
+.login-button {
+    padding: 14px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #e50914; /* Vermelho para o botão */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #b4060e; /* Cor mais escura ao passar o mouse */
+}
+
+/* Mensagem de erro */
+#error-message {
+    color: #f00; /* Vermelho para a mensagem de erro */
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Link para registro */
+p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #bbb; /* Cor cinza claro para o texto */
+}
+
+p a {
+    color: #e50914; /* Vermelho para o link */
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    #login-container {
+        padding: 20px;
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .login-button {
+        font-size: 14px;
+        padding: 12px;
+    }
+}

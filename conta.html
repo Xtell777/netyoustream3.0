@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Net You Stream</title>
+    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Perfil do Usuário</h1>
+        <p>Gerencie suas informações pessoais aqui.</p>
+    </header>
+
+    <div id="profile-container">
+        <h2><i class="fas fa-user-circle"></i> Minha Conta</h2>
+
+        <div class="profile-info">
+            <!-- Foto de Perfil -->
+            <div class="profile-picture">
+                <img src="default-profile.jpg" alt="Foto de Perfil" id="profile-img">
+                <button type="button" id="change-photo"><i class="fas fa-camera"></i> Alterar Foto</button>
+            </div>
+
+            <div class="form-group">
+                <label for="full-name">Nome Completo:</label>
+                <input type="text" id="full-name" value="Exemplo Nome Completo">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" value="exemplo_usuario">
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Data de Nascimento:</label>
+                <input type="date" id="dob" value="2000-01-01">
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Sexo:</label>
+                <select id="gender">
+                    <option value="masculino" selected>Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" value="exemplo@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <div class="password-container">
+                    <input type="password" id="password" value="senha123">
+                    <button type="button" id="toggle-password"><i class="fas fa-eye"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="edit-profile">
+            <button id="edit-button"><i class="fas fa-edit"></i> Editar Perfil</button>
+            <button id="save-button" class="hidden"><i class="fas fa-save"></i> Salvar Alterações</button>
+        </div>
+    </div>
+
+    <script>
+        // Alternar visibilidade da senha
+        const togglePassword = document.getElementById('toggle-password');
+        const passwordInput = document.getElementById('password');
+        
+        togglePassword.addEventListener('click', () => {
+            const isPasswordVisible = passwordInput.type === 'text';
+            passwordInput.type = isPasswordVisible ? 'password' : 'text';
+            togglePassword.innerHTML = isPasswordVisible ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+
+        // Habilitar edição do perfil
+        const editButton = document.getElementById('edit-button');
+        const saveButton = document.getElementById('save-button');
+        const inputs = document.querySelectorAll('.profile-info input, .profile-info select');
+
+        editButton.addEventListener('click', () => {
+            inputs.forEach(input => input.disabled = false);
+            editButton.classList.add('hidden');
+            saveButton.classList.remove('hidden');
+        });
+
+        saveButton.addEventListener('click', () => {
+            // Coletar dados para salvar no banco de dados
+            const userData = {
+                fullName: document.getElementById('full-name').value,
+                username: document.getElementById('username').value,
+                dob: document.getElementById('dob').value,
+                gender: document.getElementById('gender').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            // Enviar dados via AJAX
+            const formData = new FormData();
+            formData.append('action', 'updateProfile');
+            for (const key in userData) {
+                formData.append(key, userData[key]);
+            }
+
+            // Enviar dados para o servidor
+            fetch('update_profile.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Alterações salvas com sucesso!');
+                    location.reload(); // Recarregar a página para mostrar as mudanças
+                } else {
+                    alert('Erro ao salvar as informações.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao enviar dados:', error);
+                alert('Erro ao salvar as informações.');
+            });
+        });
+
+        // Função para alterar a foto de perfil
+        const changePhotoButton = document.getElementById('change-photo');
+        const profileImg = document.getElementById('profile-img');
+
+        changePhotoButton.addEventListener('click', () => {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            fileInput.onchange = function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        profileImg.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+
+                    // Enviar foto para o servidor via AJAX
+                    const photoData = new FormData();
+                    photoData.append('action', 'updateProfilePicture');
+                    photoData.append('profile_picture', file);
+
+                    fetch('update_profile.php', {
+                        method: 'POST',
+                        body: photoData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.success) {
+                            alert('Erro ao salvar foto de perfil.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao enviar foto:', error);
+                    });
+                }
+            };
+            fileInput.click();
+        });
+    </script>
+</body>
+</html>

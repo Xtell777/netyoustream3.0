@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net You Stream</title>
+<link rel="stylesheet" href="channel.css">
+    <!-- Vincular a biblioteca Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- Adicione o link para o ícone do Chromecast -->
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+   
+
+    <!-- HTML -->
+<div class="menu-container">
+  <div class="menu-icon" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="menu-content" id="menuContent">
+    <!-- Conteúdo do menu aqui -->
+    <a href="index.html"><i class="fas fa-home"></i> Início</a>
+    <a href="login.html"><i class="fas fa-sign-in-alt"></i> login</a>
+    <a href="conta.html"><i class="fas fa-user-plus"></i> conta</a>
+    <a href="subscriptions.html"><i class="fas fa-bell"></i> Inscrições</a>
+    <a href="settings.html"><i class="fas fa-cog"></i> Configurações</a>
+    <a href="uploads.html"><i class="fas fa-upload"></i> Uploads</a>
+    <a href="uploaded.html"><i class="fas fa-file-upload"></i> Arquivos Enviados</a>
+    <a href="history.html"><i class="fas fa-history"></i> Histórico</a>
+    <a href="channel.html"><i class="fas fa-tv"></i> Canal</a>
+    <a href="notifications.html"><i class="fas fa-bell"></i> Notificações</a>
+    <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+
+  </div>
+</div>
+
+
+</head>
+<body>
+    <header>
+        <!-- Cabeçalho do site -->
+        <h1>Net You Stream</h1>
+    </header>
+
+    <nav>
+        <!-- Menu de navegação -->
+        <a href="index.html"><i class="fas fa-home"></i> Início</a>
+        <a class="vip" href="vip.html"><i class="fas fa-star"></i> VIP</a>
+        <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+        <a href="musica.html"><i class="fas fa-music"></i> Música</a>
+        <a href="filmes.html"><i class="fas fa-film"></i> Filmes</a>
+        <a href="live.html"><i class="fas fa-broadcast-tower"></i> Live</a>
+        <a href="esporte.html"><i class="fas fa-football-ball"></i> Esporte</a>
+        <a href="podcast.html"><i class="fas fa-podcast"></i> Podcast</a>
+        <a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a>
+    </nav>
+    <!-- Carregar a biblioteca de ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Carregar a biblioteca de ícones -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+
+<body>
+    <div id="channel-container">
+        <div id="channel-header">
+            <div class="channel-info">
+                <img id="channel-image" src="" alt="Imagem do seu canal " class="channel-image">
+                <div id="channel-info">
+                    <h2 id="channel-name">Seu Nome</h2>
+                    <div id="channel-stats">
+                        <div class="stat-item">Inscritos: 0</div>
+                        <div class="stat-item">Vídeos: 0</div>
+                        <div class="stat-item">Visualizações: 0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="channel-description">
+            <p id="description-text">Sua Descrição.</p>
+        </div>
+
+        <!-- Formulário para editar nome, imagem e descrição -->
+        <div id="edit-channel-form">
+            <h3>Editar Informações do Canal</h3>
+            <form id="channel-edit-form">
+                <div class="form-group">
+                    <label for="new-channel-name">Novo Nome de Usuário:</label>
+                    <input type="text" id="new-channel-name" placeholder="Digite o novo nome">
+                </div>
+                <div class="form-group">
+                    <label for="new-channel-image">Nova Foto do Usuário:</label>
+                    <input type="file" id="new-channel-image" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="new-description">Nova Descrição do Canal:</label>
+                    <textarea id="new-description" rows="4" placeholder="Digite a nova descrição"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Carrega os dados do localStorage ao carregar a página
+        window.onload = function() {
+            // Carregar o nome do canal
+            const storedName = localStorage.getItem('channelName');
+            if (storedName) {
+                document.getElementById('channel-name').textContent = storedName;
+            }
+
+            // Carregar a descrição do canal
+            const storedDescription = localStorage.getItem('channelDescription');
+            if (storedDescription) {
+                document.getElementById('description-text').textContent = storedDescription;
+            }
+
+            // Carregar a imagem do canal
+            const storedImage = localStorage.getItem('channelImage');
+            if (storedImage) {
+                document.getElementById('channel-image').src = storedImage;
+            }
+        };
+
+        // Manipula o envio do formulário de edição
+        document.getElementById('channel-edit-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Obtém os valores dos campos de edição
+            const newName = document.getElementById('new-channel-name').value;
+            const newDescription = document.getElementById('new-description').value;
+            const newImageFile = document.getElementById('new-channel-image').files[0];
+
+            // Atualiza o nome do canal se houver um novo nome
+            if (newName) {
+                document.getElementById('channel-name').textContent = newName;
+                localStorage.setItem('channelName', newName); // Salva no localStorage
+            }
+
+            // Atualiza a descrição do canal se houver uma nova descrição
+            if (newDescription) {
+                document.getElementById('description-text').textContent = newDescription;
+                localStorage.setItem('channelDescription', newDescription); // Salva no localStorage
+            }
+
+            // Atualiza a imagem do canal se houver uma nova imagem
+            if (newImageFile) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('channel-image').src = e.target.result;
+                    localStorage.setItem('channelImage', e.target.result); // Salva a imagem no localStorage
+                };
+                reader.readAsDataURL(newImageFile); // Converte o arquivo de imagem em base64
+            }
+
+            alert('Informações do canal atualizadas com sucesso!');
+        });
+    </script>
+</body> 
+        <div id="video-container">
+            <!-- Aqui vão os cartões de vídeo -->
+
+</div>
+
+    <main>
+    
+        
+
+
+
+
+
+
+
+
+    </main>
+
+
+
+
+<script>
+// JavaScript para alternar o menu
+function toggleMenu() {
+  var menuContent = document.getElementById('menuContent');
+  if (menuContent.style.display === 'block') {
+    menuContent.style.display = 'none';
+  } else {
+    menuContent.style.display = 'block';
+  }
+}
+
+// Adiciona um ouvinte de evento para fechar o menu quando clicar fora dele
+window.onclick = function(event) {
+  var menuContent = document.getElementById('menuContent');
+  if (event.target == menuContent) {
+    menuContent.style.display = 'none';
+  }
+}
+
+
+</script>
+<!-- Adicione mais seções de vídeo conforme necessário, ajustando os IDs e chamadas de função -->
+
+        
+           
+            </div>
+<!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Adicione este trecho de script no final do seu arquivo HTML, antes da tag de fechamento </body> -->
+
+
+ 
+
+
+
+<script>
+     // JavaScript
+function toggleMenu() {
+  var menu = document.getElementById("menuContent");
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+}
+
+     
+      </script>
+
+
+
+
+
+
+
+
+
+<header>
+        <h1>Net You Stream</h1>
+    </header>
+    <footer>
+      <!-- Rodapé do site -->
+        <p>&copy; 2024 Net You Stream. Todos os direitos reservados.</p>
+        <p><a href="termos.html">Termos de Serviço</a> | <a href="privacidade.html">Política de Privacidade</a></p>
+    </footer>
+    <!-- Adicione esta parte do código JavaScript no final do seu arquivo -->
+
+
+
+           
+</body>
+</html>
+   

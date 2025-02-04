@@ -1,0 +1,248 @@
+/* Resetando margens e padding para um controle total */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Fundo escuro */
+    color: white; /* Texto branco */
+    min-height: 100vh; /* Garantir que a altura mínima da página seja 100% da altura da janela */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #141414; /* Fundo escuro para o cabeçalho */
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 1px solid #333; /* Linha separadora sutil */
+}
+
+header h1 {
+    color: #FF0000; /* Vermelho como no YouTube */
+    font-size: 36px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FF0000; /* Vermelho no hover */
+}
+
+/* Seção sobre */
+.sobre {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    flex-grow: 1; /* Permite que essa seção ocupe o máximo de espaço disponível */
+}
+
+.sobre h2 {
+    font-size: 32px;
+    color: #FF0000; /* Título em vermelho */
+    margin-bottom: 20px;
+}
+
+.sobre p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #ccc; /* Texto em cinza claro para melhorar a leitura */
+}
+
+.sobre h3 {
+    font-size: 26px;
+    color: #FF0000; /* Subtítulos em vermelho */
+    margin-bottom: 10px;
+}
+
+.sobre ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.sobre ul li {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.sobre ol {
+    list-style: decimal;
+    margin-bottom: 20px;
+}
+
+.sobre ol li {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.sobre strong {
+    font-weight: bold;
+}
+
+/* Rodapé */
+footer {
+    background-color: #141414;
+    color: #aaa;
+    text-align: center;
+    padding: 20px;
+    position: relative; /* Alterado de fixed para relative */
+    width: 100%;
+    margin-top: auto; /* Garante que o rodapé ficará no final da página */
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Seção de chamada para ação (botões) */
+.call-to-action {
+    background-color: #FF0000;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.call-to-action:hover {
+    background-color: #D10000; /* Vermelho mais escuro no hover */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .sobre {
+        padding: 20px;
+    }
+
+    .sobre h2 {
+        font-size: 28px;
+    }
+
+    .sobre h3 {
+        font-size: 22px;
+    }
+
+    .call-to-action {
+        font-size: 18px;
+    }
+}
+    /* Estilo para o menu de navegação */
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Estilo para os ícones */
+        .fas {
+            margin-right: 5px;
+        }
+
+        /* Estilo para o conteúdo principal */
+        main {
+            padding: 20px;
+        }
+
+   
+     nav {
+    background-color: #333; /* Cor de fundo */
+    padding: 10px; /* Espaçamento interno */
+}
+
+nav a {
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado dos links */
+    display: inline-block; /* Exibir os links em linha */
+    margin-right: 20px; /* Espaçamento entre os links */
+}
+
+nav a i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+footer1 {
+    background-color: #f4f4f4; /* Cor de fundo suave */
+    padding: 20px 0; /* Espaçamento interno */
+    text-align: center; /* Centralizar conteúdo */
+    position: relative; /* Permite que fique no fluxo normal da página */
+    width: 100%; /* Ocupa toda a largura */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para destaque */
+    margin-top: 20px; /* Espaçamento superior para separá-lo do conteúdo acima */
+}
+
+footer1 p {
+    margin: 10px 0; /* Espaçamento vertical */
+    font-size: 14px; /* Tamanho do texto */
+    color: #555; /* Cor do texto */
+}
+
+footer1 ul {
+    display: flex; /* Exibir links lado a lado */
+    justify-content: center; /* Centralizar links */
+    list-style-type: none; /* Remover marcadores */
+    padding: 0; /* Remover espaçamento padrão */
+    margin: 0; /* Remover margem padrão */
+}
+
+footer1 ul li {
+    margin: 0 10px; /* Espaçamento horizontal entre links */
+}
+
+footer1 ul li a {
+    display: flex; /* Para alinhar texto e ícone lado a lado */
+    align-items: center; /* Centralizar ícone e texto verticalmente */
+    text-decoration: none; /* Remover sublinhado */
+    color: #007BFF; /* Cor do texto do link */
+    font-size: 14px; /* Tamanho do texto do link */
+    transition: color 0.3s ease; /* Efeito de transição na cor */
+}
+
+footer1 ul li a i {
+    margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+    font-size: 16px; /* Tamanho do ícone */
+}
+
+footer1 ul li a:hover {
+    color: #0056b3; /* Cor do link ao passar o mouse */
+}
